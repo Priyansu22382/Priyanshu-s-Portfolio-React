@@ -1,0 +1,191 @@
+@import "tailwindcss";
+/* foreground : {foreground refers to the visible content that sits on top of the background — usually text, icons, buttons, or important UI elements that users interact with or read.} */
+/* “subtle pulsing effect” mean?
+A subtle pulsing effect refers to a gentle visual animation where an element:
+
+Slightly fades in and out
+
+Or grows and shrinks just a little
+
+In a slow, smooth, non-distracting way */
+@theme {
+  /* Theme Colors */
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-card: hsl(var(--card));
+
+  /* Animation Shorthand Variables */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
+
+  --animate-fade-in: fade-in 0.7s ease-out forwards;
+  --animate-fade-in-delay-1: fade-in 0.7s ease-out 0.2s forwards;
+  --animate-fade-in-delay-2: fade-in 0.7s ease-out 0.4s forwards;
+  --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
+  --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
+
+  --animate-meteor: meteor 5s linear infinite;
+}
+@keyframes float{
+  0%, 100%{
+    transform : translateY(0);
+  }
+  50%{
+    transform : translateY(-10px);
+  }
+}
+@keyframes pulse-subtle{
+  0%, 100%{
+    opacity : 1;
+  }
+  50%{
+    opacity : 0.8;
+  }
+}
+@keyframes fade-in{
+  from{
+    opacity : 0;
+    transform : translateY(20px);
+  }
+  to{
+    opacity : 1;
+    transform : translateY(0);
+  }
+}
+@keyframes meteor{
+  0%{
+    transform : rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70%{
+    opacity : 1;
+  }
+  100%{
+    transform : rotate(215deg) translateX(-500px);
+    opacity : 0;
+  }
+}
+/* Define global tag-levels styles */
+@layer base{
+  /* You define global variables here. These variables can be reused anywhere. It helps build themes (like light/dark). It's inherited by all child elements in the DOM */
+  :root{
+    --background : 210 40% 98%;
+    --foreground : 222 47% 11%;
+    --card : 0 0% 100%;
+    --primary : 250 47% 60%;
+    --primary-foreground : 210 40% 98%;
+    --border : 214 32% 91%;
+  }
+
+  .dark{
+    --background : 222 47% 4%;
+    --foreground : 213 31% 91%;
+    --card : 222 47% 8%;
+    --primary : 250 65% 65%;
+    --primary-foreground : 213 31% 91%;
+    --border : 217 33% 20%;
+  }
+
+  *{
+    @apply border-border;
+  }
+  html{
+    @apply scroll-smooth;
+  }
+  body{
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+@layer utilities {
+  .star {
+    @apply absolute bg-white rounded-full;
+  }
+
+  .animation-pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .meteor {
+    @apply absolute rounded-full;
+    background: linear-gradient(to right, white, white, transparent);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .animate-meteor {
+    animation-name: meteor;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+@layer utilities {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+    max-width: 1280px; /* or whatever breakpoints you want */
+  }
+
+  .text-glow {
+    @apply relative;
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  }
+}
+
+
+@utilities text-glow{
+  @apply relative;
+  text-shadow : 0 0 10px rgba(167,139,250,0.5)
+}
+
+@layer utilities{
+  .card-hover{
+    @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+  }
+}
+@layer utilities {
+  .gradient-border {
+    @apply relative rounded-md;
+    background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+}
+
+
+@utilities cosmic-button{
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,)] hover:scale-[1.02] active:scale-95;
+}
+
+@utilities star{
+  @apply absolute rounded-full bg-white;
+  box-shadow : 0 0 10px 2px rgba(255,255,255,0.4);
+}
+
+@utilities meteor{
+  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
+  box-shadow : 0 0 10px 2px rgba(255,255,255,0.3);
+}
+
+#root{
+  max-width : 100%;
+  margin : 0 auto;
+  padding : 0;
+  text-align: center;
+}
+
+@layer utilities {
+  .cosmic-button {
+    @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:scale-[1.02] active:scale-95;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5); /* optional glow */
+  }
+}
+
