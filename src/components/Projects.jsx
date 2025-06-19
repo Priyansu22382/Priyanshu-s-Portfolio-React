@@ -5,7 +5,7 @@ const projects = [
         id : 1,
         title : "Apni Rasoi Page",
         description : "A beautiful Resturant Page App using HTML, CSS, Javascript.",
-        image : "../public/ResturantApsniRasoi.png",
+        image : "/ResturantApsniRasoi.png",
         tags : ["HTML", "CSS", "Javascript"],
         demoUrl : "https://priyansu22382.github.io/Resturant_Frontend_UI/",
         gitUrl : "https://github.com/Priyansu22382/Resturant_Frontend_UI"
@@ -14,7 +14,7 @@ const projects = [
         id : 2,
         title : "My Old Portfolio Webite",
         description : "A beautiful Portfolio Web App using HTML, CSS, Javascript.",
-        image : '../public/Portfolio.png',
+        image : '/Portfolio.png',
         tags : ["HTML", "CSS", "Javascript"],
         demoUrl : "https://portfolio-website-priyanshus-projects-d73f6a02.vercel.app/",
         gitUrl : "https://github.com/Priyansu22382/Portfolio-Website"
@@ -23,7 +23,7 @@ const projects = [
         id : 3,
         title : "Study Sync Website",
         description : "A beautiful Study Sync Page App using HTML, CSS, Javascript.",
-        image : '../public/StudySync.png',
+        image : '/StudySync.png',
         tags : ["HTML", "CSS", "Javascript"],
         demoUrl : "https://priyansu22382.github.io/StudyPointProject/",
         gitUrl : "https://github.com/Priyansu22382/StudyPointProject"
